@@ -2,7 +2,7 @@ import { StyledApp } from 'App.styled';
 import { ImageGallery } from './ImageGallery/ImageGallery';
 
 import { Button } from './Button/Button';
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getGallery } from 'helpers/PixabayAPI';
 import Searchbar from './Searchbar/Searchbar';
 import Modal from './Modal/Modal';
@@ -13,7 +13,7 @@ export const App = () => {
   const [gallery, setGallery] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [page, setPage] = useState(1);
-  const [per_page, setPerPage] = useState(12);
+  const [per_page] = useState(12);
   const [q, setQ] = useState('');
   const [currentImg, setCurrentImg] = useState(null);
   const [error, setError] = useState(null);
