@@ -4,10 +4,10 @@ import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Button } from './Button/Button';
 import React, { useEffect, useState } from 'react';
 import { getGallery } from 'helpers/PixabayAPI';
-import Searchbar from './Searchbar/Searchbar';
 
 import { Loader } from './Loader/Loader';
 import { Modal } from './Modal/Modal';
+import { Searchbar } from './Searchbar/Searchbar';
 
 export const App = () => {
   const [loading, setLoading] = useState(false);
@@ -52,6 +52,7 @@ export const App = () => {
   const handleChangeQuery = str => {
     setQ(str);
     setGallery([]);
+    setPage(1);
   };
   const closeModal = () => {
     setIsOpen(false);
