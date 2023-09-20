@@ -5,8 +5,9 @@ import { Button } from './Button/Button';
 import React, { useEffect, useState } from 'react';
 import { getGallery } from 'helpers/PixabayAPI';
 import Searchbar from './Searchbar/Searchbar';
-import Modal from './Modal/Modal';
+
 import { Loader } from './Loader/Loader';
+import { Modal } from './Modal/Modal';
 
 export const App = () => {
   const [loading, setLoading] = useState(false);
@@ -25,6 +26,7 @@ export const App = () => {
     }
 
     const fetchGallery = async () => {
+      setLoading(true);
       try {
         const data = await getGallery({ q, per_page, page });
         const maxImg = Math.ceil(data.totalHits / per_page);
@@ -38,13 +40,10 @@ export const App = () => {
       }
     };
     fetchGallery();
-    setLoading(true);
   }, [q, page, per_page]);
 
   const onLoadMore = () => {
-    if (page < maxImg) {
-      setPage(prev => prev + 1);
-    }
+    setPage(prev => prev + 1);
   };
   const handleOpenModal = img => {
     setIsOpen(prev => !prev);
